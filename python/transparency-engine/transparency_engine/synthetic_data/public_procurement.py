@@ -17,8 +17,10 @@ from transparency_engine.modules.data_generator.synthetic_data_generator import 
     FlagConfig,
     StaticAttributeConfig,
     SyntheticDataGenerator,
+
 )
 from transparency_engine.pipeline.schemas import ATTRIBUTE_ID
+from transparency_engine.modules.data_generator.synthetic_data_generator import write_synthetic_data
 
 
 procurement_configs = DataGeneratorConfig(
@@ -273,4 +275,6 @@ def generate_procurement_data(
         FLAG_METADATA_TABLE: data.flag_metadata,
         ATTRIBUTE_METADATA_TABLE: data.attribute_metadata,
     }
+    write_synthetic_data(data_dict,'python/transparency-engine/sample-data')
     return data_dict
+   

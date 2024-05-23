@@ -21,7 +21,8 @@ from typing import Any, Dict
 from transparency_engine.containers import ContainerKeys, build_container
 from transparency_engine.io.data_handler import DataHandler, DataHandlerModes
 from transparency_engine.pipeline import TransparencyPipeline
-from transparency_engine.typing import PipelineSteps
+from transparency_engine.custom_typing import PipelineSteps
+from transparency_engine.synthetic_data.public_procurement import generate_procurement_data
 
 
 # Set to info for now. Pull from config later
@@ -75,12 +76,13 @@ def main(config_path: str, steps_path: str) -> None:
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Execute the transparency engine.")
-    parser.add_argument(
-        "--config", metavar="config", required=True, help="the path to config json file"
-    )
-    parser.add_argument(
-        "--steps", metavar="steps", required=True, help="path to the steps json file"
-    )
-    args = parser.parse_args()
-    main(args.config, args.steps)
+    generate_procurement_data()
+    # parser = argparse.ArgumentParser(description="Execute the transparency engine.")
+    # parser.add_argument(
+    #     "--config", metavar="config", required=True, help="the path to config json file"
+    # )
+    # parser.add_argument(
+    #     "--steps", metavar="steps", required=True, help="path to the steps json file"
+    # )
+    # args = parser.parse_args()
+    # main(args.config, args.steps)
